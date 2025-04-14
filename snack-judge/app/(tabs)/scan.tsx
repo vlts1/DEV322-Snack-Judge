@@ -1,27 +1,43 @@
-import { StyleSheet, Image, Platform, ScrollView } from 'react-native';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import { StyleSheet, View } from 'react-native';
+import { CameraView, useCameraPermissions } from 'expo-camera';
+import NoCameraPermission from '@/components/help_components/NoCameraPermission';
+import { useEffect } from 'react';
+import { useIsFocused } from '@react-navigation/native';
+import CameraOverlay from '@/components/CameraOverlay';
 
-export default function TabTwoScreen() {
-  return (
-    <ScrollView>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Explore</ThemedText>
-      </ThemedView>
-      <ThemedText>This app includes example code to help you get started.</ThemedText>
-    </ScrollView>
-  );
+export default function ScanScreen() {
+  const [permission, requestPermission] = useCameraPermissions();
+  const isFocused = useIsFocused();
+
+  useEffect(() => {
+    requestPermission();
+  }, []);
+
+  if (permission?.granted === false) {
+    return <NoCameraPermission />;
+  }
+
+  if (permission?.granted && isFocused) {
+    return (
+      <View style={styles.container}>
+        <CameraView
+          style={StyleSheet.absoluteFill}
+          facing="back"
+          barcodeScannerSettings={{ barcodeTypes: ['ean13', 'upc_a'] }}
+          onBarcodeScanned={(barcode) => {
+            console.log(barcode.data);
+          }}
+        />
+        <CameraOverlay />
+      </View>
+    );
+  }
+
+  return <View style={styles.container} />;
 }
 
 const styles = StyleSheet.create({
-  headerImage: {
-    color: '#808080',
-    bottom: -90,
-    left: -35,
-    position: 'absolute',
-  },
-  titleContainer: {
-    flexDirection: 'row',
-    gap: 8,
+  container: {
+    flex: 1,
   },
 });
