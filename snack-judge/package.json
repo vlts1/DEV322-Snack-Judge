@@ -1,6 +1,7 @@
 {
   "name": "snack-judge",
   "main": "expo-router/entry",
+  "author": "Vlad, Ashmeet, Nick and Zoe",
   "version": "1.0.0",
   "scripts": {
     "start": "expo start",

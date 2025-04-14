@@ -1,10 +1,5 @@
-import { StyleSheet, ScrollView, View } from 'react-native';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-import { InListItem } from '@/components/InListItem';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { StyleSheet, ScrollView } from 'react-native';
 import EmptyHistory from '@/components/help_components/EmptyHistory';
-import ErrorFetching from '@/components/help_components/ErrorFetching';
 
 export default function HistoryScreen() {
   return (
