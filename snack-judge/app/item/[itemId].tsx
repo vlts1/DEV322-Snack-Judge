@@ -7,6 +7,7 @@ import {
   ScrollView,
   useColorScheme,
   TouchableOpacity,
+  Image,
 } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import ErrorFetching from '@/components/help_components/ErrorFetching';
@@ -81,8 +82,20 @@ export default function ItemScreen() {
 
   return (
     <ScrollView style={styles.container}>
-      <Text style={[styles.prodBrand, { color: textColor }]}>{make}</Text>
-      <Text style={[styles.prodName, { color: textColor }]}>{name}</Text>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+         <View style={{flexDirection: "column"}}>
+          <Text style={[styles.prodBrand, { color: textColor }]}>{make}</Text>
+          <Text style={[styles.prodName, { color: textColor }]}>{name}</Text>
+         </View>
+         <View style={{width: "15%"}}></View>
+         <Image
+           source={{ uri: item.image_url }}
+           style={styles.productImage}
+           resizeMode="contain"
+         /> 
+      </View>
+
+
       <View style={styles.divider} />
       <Text style={[styles.sectionTitle, { color: textColor }]}>Nutrition Facts</Text>
       <Text style={[styles.paragraph, { color: textColor }]}>Serving Size: {servings}</Text>
@@ -147,6 +160,7 @@ export default function ItemScreen() {
 }
 
 const styles = StyleSheet.create({
+  productImage: { width: "50%", height: 150 },
   prodName: { fontSize: 24, fontWeight: '700', marginBottom: 8 },
   prodBrand: { fontSize: 20, fontWeight: '600', marginBottom: 8 },
   divider: { height: 1, backgroundColor: '#ccc', marginVertical: 16, marginTop: 30, opacity: 0.6 },
