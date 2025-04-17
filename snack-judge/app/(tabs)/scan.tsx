@@ -3,7 +3,7 @@ import { CameraView, useCameraPermissions } from 'expo-camera';
 import NoCameraPermission from '@/components/help_components/NoCameraPermission';
 import { useEffect, useRef } from 'react';
 import { useIsFocused } from '@react-navigation/native';
-import CameraOverlay from '@/components/CameraOverlay';
+import CameraOverlay from '@/components/scanner/CameraOverlay';
 import { useRouter } from 'expo-router';
 
 export default function ScanScreen() {

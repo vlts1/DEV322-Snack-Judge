@@ -27,6 +27,7 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'History',
+          headerTitleStyle: {fontSize: 19},
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="newspaper.fill" color={color} />,
         }}
       />
@@ -34,6 +35,7 @@ export default function TabLayout() {
         name="scan"
         options={{
           title: 'Scan',
+          headerTitleStyle: {fontSize: 19},
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="camera.fill" color={color} />,
         }}
       />
