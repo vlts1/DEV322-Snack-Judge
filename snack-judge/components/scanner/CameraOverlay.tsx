@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
+// NOTE: This code is AI generated
+
 const CameraOverlay = () => {
   return (
     <View style={styles.overlay}>
